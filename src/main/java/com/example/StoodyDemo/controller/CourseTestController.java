@@ -14,9 +14,6 @@ import java.util.Optional;
 @RequestMapping("/course")
 @RequiredArgsConstructor
 public class CourseTestController {
-
-    @Autowired
-    private final CourseRepository courseRepository;
     @Autowired
     private final CourseService courseService;
 
@@ -34,7 +31,7 @@ public class CourseTestController {
 
     @GetMapping("/show-all")
     public List<Course> findAll() {
-        return courseRepository.findAll();
+        return courseService.findAll();
     }
 
     @GetMapping("/show-all/id/{id}")
@@ -42,12 +39,12 @@ public class CourseTestController {
         return courseService.findById(id);
     }
 
-    @DeleteMapping("/delete-course")
+    @PostMapping("/delete-course")
     public void deleteCategory(@RequestBody Course course) {
         courseService.delete(course);
     }
 
-    @DeleteMapping("/delete-course/id/{id}")
+    @PostMapping("/delete-course/id/{id}")
     public void deleteById(@PathVariable Long id) {
         courseService.deleteById(id);
     }

@@ -4,6 +4,7 @@ import com.example.StoodyDemo.model.entity.Category;
 import com.example.StoodyDemo.model.repository.CategoryRepository;
 import com.example.StoodyDemo.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("/category")
 @RequiredArgsConstructor
 public class CategoryTestController {
-
+    @Autowired
     private final CategoryService categoryService;
 
     @PostMapping("/create")
@@ -31,12 +32,12 @@ public class CategoryTestController {
         return categoryService.findById(id);
     }
 
-    @DeleteMapping("/delete-category")
+    @PostMapping("/delete-category")
     public void deleteCategory(@RequestBody Category category){
         categoryService.delete(category);
     }
 
-    @DeleteMapping("/delete-category/id/{id}")
+    @PostMapping("/delete-category/id/{id}")
     public void deleteById(@PathVariable Integer id){
         categoryService.deleteById(id);
     }

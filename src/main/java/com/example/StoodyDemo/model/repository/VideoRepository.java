@@ -15,7 +15,7 @@ public interface VideoRepository extends JpaRepository<Video, Long> {
     List<Video> findAll();
 
     @Override
-    List<Video> findAll(Sort sort);
+    List<Video> findAllById(Iterable<Long> longs);
 
     @Override
     <S extends Video> S save(S entity);
