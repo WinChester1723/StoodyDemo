@@ -1,5 +1,7 @@
 package com.example.StoodyDemo.model.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +10,8 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(schema = "stoody", name = "courses")
 public class Course {
@@ -20,11 +24,11 @@ public class Course {
     private String description;
 
     //    ManyToMany
-//    TODO: OrkhanGG - need fixed
+//    TODO: OrkhanGG - need fixed / now this code worked
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(schema = "stoody", name = "course_authors",
-    joinColumns = {@JoinColumn(name = "course_id",referencedColumnName = "id")},
-    inverseJoinColumns = {@JoinColumn(name = "author_id", referencedColumnName = "id")})
+            joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "author_id", referencedColumnName = "id")})
     private List<User> author;//maybe Set<>
 
     //    OneToMany
@@ -36,7 +40,7 @@ public class Course {
     @JoinTable(schema = "stoody", name = "course_comments",
             joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "comment_id", referencedColumnName = "id")})
-    private List<Comment> comments;//maybe Set<>
+    private List<Comment> comments;
 
     @Column(name = "view_count")
     private int viewCount;

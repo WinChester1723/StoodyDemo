@@ -3,6 +3,7 @@ package com.example.StoodyDemo.controller;
 import com.example.StoodyDemo.model.entity.Video;
 import com.example.StoodyDemo.model.repository.VideoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

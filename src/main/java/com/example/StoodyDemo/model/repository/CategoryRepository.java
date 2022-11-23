@@ -26,9 +26,11 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     @Override
     void deleteById(Integer integer);
 
+
     @Override
-    void delete(Category entity);
+    void delete(Category category);
 
     @Override
     <S extends Category> boolean exists(Example<S> example);
+
 }

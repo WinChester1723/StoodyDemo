@@ -1,14 +1,14 @@
 package com.example.StoodyDemo.model.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(schema = "stoody", name = "users")
 public class User {
@@ -28,7 +28,7 @@ public class User {
     private String email;
     private String password;
 
-    //        @OneToMany()// TODO: OrkhanGG - this fields need create class
+    //        @OneToMany()// TODO: OrkhanGG - this fields need create class / now this fileds are worked
     @ElementCollection
     @Column(name = "watch_history")
     private List<String> watchHistory;//need fix

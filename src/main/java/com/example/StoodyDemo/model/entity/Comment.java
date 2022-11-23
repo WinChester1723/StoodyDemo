@@ -18,7 +18,7 @@ public class Comment {
     private Long id;
 
     //ManyToMany -?
-//    TODO: OrkhanGG - need fixed
+//    TODO: OrkhanGG - need fixed / now this code worked
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(schema = "stoody", name = "comment_users",
             joinColumns = {@JoinColumn(name = "comment_id", referencedColumnName = "id")},
@@ -31,6 +31,6 @@ public class Comment {
     private int like;
     @Column(name = "dis_like")
     private int disLike;
-    //    ?????
+    //    ????? TODO: OrkhanGG - need fixed
 //    private List<Comment> replies;
 }
