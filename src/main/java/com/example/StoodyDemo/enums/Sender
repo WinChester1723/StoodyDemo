@@ -1,0 +1,34 @@
+@Service
+public class EmailSenderService {
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    public void sendEmail(String toEmail, String subject, String body) {
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simplemailmessage.setfrom("orxan.eliyev.orxan@gmail.com");
+        simpleMailMessage.setTo(toEmail);
+        simpleMailMessage.setText(body);
+        simpleMailMessage.setSubject(subject);
+
+        javaMailSender.send(simpleMailMessage);
+        System.out.println("Sent");
+    }
+
+}
+
+
+app pro
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=orxan.eliyev.orxan@gmail.com
+spring.mail.password=mgtxpyuyoqlodqbv
+
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+videoda kursun edit olunmasi
+
+kursun edit olunmasi
+
+kurs draft meselesi
