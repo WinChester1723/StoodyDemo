@@ -14,7 +14,6 @@ public class ContactInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "contact_info_id")
     private Long id;
 
     private String website;

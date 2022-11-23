@@ -14,7 +14,6 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "course_id")
     private Long id;
 
     private String name;
@@ -24,8 +23,8 @@ public class Course {
 //    TODO: OrkhanGG - need fixed
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(schema = "stoody", name = "course_authors",
-    joinColumns = {@JoinColumn(name = "course_id",referencedColumnName = "course_id")},
-    inverseJoinColumns = {@JoinColumn(name = "author_id", referencedColumnName = "user_id")})
+    joinColumns = {@JoinColumn(name = "course_id",referencedColumnName = "id")},
+    inverseJoinColumns = {@JoinColumn(name = "author_id", referencedColumnName = "id")})
     private List<User> author;//maybe Set<>
 
     //    OneToMany
@@ -35,8 +34,8 @@ public class Course {
     //    ManyToMany
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(schema = "stoody", name = "course_comments",
-            joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "course_id")},
-            inverseJoinColumns = {@JoinColumn(name = "comment_id", referencedColumnName = "comment_id")})
+            joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "comment_id", referencedColumnName = "id")})
     private List<Comment> comments;//maybe Set<>
 
     @Column(name = "view_count")
@@ -56,8 +55,8 @@ public class Course {
     @Column(name = "ribbon_text")
     private String ribbonText;
 
-    @ElementCollection
-    private List<String> courseTags;//needed fix
+//    @ElementCollection
+//    private List<String> courseTags;//TODO: OrkhanGG - need fix
 
     private int rating;
 }

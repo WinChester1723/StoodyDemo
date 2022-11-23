@@ -14,7 +14,6 @@ public class PrivacySettings {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "privacy_settings_id")
     private int id;
 
     @Column(name = "show_profile_only_logged_users")

@@ -24,12 +24,12 @@ public class CourseTestController {
         return courseRepository.save(course);
     }
 
-    @PostMapping("/tcreate")
-    public void test(){ Course course = new Course(); course.setName("Java");
-        List<String> t = new ArrayList<>();
-        Collections.addAll(t,"Test","Best","West");
-        course.setCourseTags(t);
-        course.setRating(500); courseRepository.save(course); }
+//    @PostMapping("/tcreate")
+//    public void test(){ Course course = new Course(); course.setName("Java");
+//        List<String> t = new ArrayList<>();
+//        Collections.addAll(t,"Test","Best","West");
+//        course.setCourseTags(t);
+//        course.setRating(500); courseRepository.save(course); }
 
     @GetMapping("/show-all")
     public List<Course> findAll(){

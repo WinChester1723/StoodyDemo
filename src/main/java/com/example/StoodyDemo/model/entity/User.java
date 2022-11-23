@@ -15,7 +15,6 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
     private Long id;
 
     //    maybe unique
@@ -28,15 +27,20 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
     private String password;
-//        @OneToMany()// TODO: OrkhanGG - this fields need create class
-//    @Column(name = "watch_history")
-//    private List<String> watchHistory;//need fix
-//    //    @OneToMany()
-//    @Column(name = "wish_list")
-//    private List<String> wishlist;//need fix
-//    //    @OneToMany()
-//    @Column(name = "watch_later")
-//    private List<String> watchLater;//need fix
+
+    //        @OneToMany()// TODO: OrkhanGG - this fields need create class
+    @ElementCollection
+    @Column(name = "watch_history")
+    private List<String> watchHistory;//need fix
+    //    @OneToMany()
+    @ElementCollection
+    @Column(name = "wish_list")
+    private List<String> wishlist;//need fix
+    //    @OneToMany()
+    @ElementCollection
+    @Column(name = "watch_later")
+    private List<String> watchLater;//need fix
+
     private String language;
     @Column(name = "profile_picture_url")
     private String profilePictureURL;
@@ -54,8 +58,8 @@ public class User {
     //  ManyToMany
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(schema = "stoody", name = "user_owned_courses",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "course_id")})
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")})
     private List<Course> ownedCourses;
 
     @Column(name = "user_credits")
